@@ -4,7 +4,7 @@ public class Clase6 {
 
     static void main() {
 
-        IO.println("subida nueva. ");
+        IO.println("subida nueva. cambio nuevo ");
         //scanner
         Scanner scanner= new Scanner(System.in);
 
