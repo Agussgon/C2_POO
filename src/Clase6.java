@@ -4,7 +4,7 @@ public class Clase6 {
 
     static void main() {
 
-        IO.println("subida nueva. ");
+        IO.println("cambios para enviarlo a otra rama remota. ");
         //scanner
         Scanner scanner= new Scanner(System.in);
 
