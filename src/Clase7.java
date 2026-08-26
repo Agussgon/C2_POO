@@ -6,6 +6,36 @@ public class Clase7 {
 
         calcularCostoTotal(5000.0);
 
+        double numA = 1.5;
+        int numB = 2;
+        String cadena = "1234";
+
+//conversión
+        String stringA = String.valueOf(numA);
+        String stringB = Integer.toString(numB);
+
+//parseo
+        Integer num = Integer.parseInt(cadena);
+        Double numDouble = Double.parseDouble(cadena);
+
+        String resultadoString = stringB + stringA;
+        System.out.println(resultadoString + " " + resultadoString.getClass());
+        System.out.println(num);
+
+
+        Integer num1 = 1000000;
+        Integer num2 = 1000000;
+
+        System.out.println("el primer n es mayor? " + num1.compareTo(num2));
+
+        //hasta el 127
+        if (num1 == num2) System.out.println("Son iguales.");
+        else System.out.println("Son distintos.");
+
+        if (num1.equals(num2)) System.out.println("Son iguales.");
+
+
+
     }
 //    Crea una función que solicite ingresar por consola el precio unitario de un producto
 //    y la cantidad comprada, ingresando los valores como texto.
