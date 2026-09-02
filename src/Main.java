@@ -5,29 +5,28 @@ public class Main {
 
     static void main() {
 
-        //creamos una instancia(objeto) de la clase Cliente
-        Cliente cliente1= new Cliente("Juan",12345678);
+        Producto producto1= new Producto(123,"Cafe",20,5000.0,
+                8000.0);
 
+        IO.println("cantidad de stock: "+ producto1.getStock());
 
-        Venta venta1= new Venta(LocalDate.of(2026,8,20),30000.0,
-                new String[]{"cafe","tostado"},cliente1);
+        producto1.setStock(10);
 
+        IO.println("cantidad de stock: "+ producto1.getStock());
+        producto1.agregarStock(-5);
 
-        //fecha actual LocalDate.now()
+        IO.println("cantidad de stock: "+ producto1.getStock());
+        producto1.quitarStock(5);
 
-        //quiero actualizar el nombre del cliente1
-       //ESTO NO -->  cliente1.nombre= "Luis" ;
-        IO.println(cliente1.getNombre());
+        IO.println("cantidad de stock: "+ producto1.getStock());
 
-        cliente1.setNombre("luz");
+        producto1.quitarStock(11);
 
-        IO.println("el nombre actualizado es: "+cliente1.getNombre());
+        IO.println("cantidad de stock: "+ producto1.getStock());
 
-        IO.println("Consultando últimos digitos del tel: "+ cliente1.getTel());
+        IO.println("consultar disponibilidad: "+ producto1.consultarDisponibilidad()+ "\n" +
+                "calcular ganancia total: "+ producto1.calcularGananciaTotal());
 
-        //calcular dias transcurridos de la compra
-
-        IO.println(" "+ venta1.calcularDiasTranscurridosDeLaVenta());
 
     }
 }
