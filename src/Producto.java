@@ -7,21 +7,21 @@ public class Producto {
     private double precioVenta;
     private final int STOCK_LIMITE_PROMOCION=15;
     private String categoria;
-
-//    //constructor
-//    public Producto(int codigo, String nombre, int stock, double precioCosto, double precioVenta) {
-//        this.codigo = codigo;
-//        this.nombre = nombre;
-//        this.stock = stock;
-//        this.precioCosto = precioCosto;
-//        this.precioVenta = precioVenta;
-//    }
+//
+    //constructor
+    public Producto(int CODIGO, String nombre, int stock, double precioCosto, double precioVenta) {
+        this.CODIGO=CODIGO;
+        this.nombre = nombre;
+        this.stock = stock;
+        this.precioCosto = precioCosto;
+        this.precioVenta = precioVenta;
+    }
 
     public Producto(int CODIGO,String nombre, double precioCosto){
         this.CODIGO= CODIGO;
         this.nombre=nombre;
         this.precioCosto=precioCosto;
-        this.precioVenta= precioCosto + precioCosto*0.10;
+        this.precioVenta= precioCosto + precioCosto*0.25;
     }
 
 
@@ -110,6 +110,7 @@ public class Producto {
 //    }
 
     //consulta de últimos 3 digitos del código para ver el sector
+
     public String consultarCODIGOSECTOR(){
         String codigoS= String.valueOf(CODIGO);
         String ultimos3= codigoS.substring(codigoS.length()-3);   //codigoS.substring(5); //si fueran 8 digitos
@@ -125,27 +126,45 @@ public class Producto {
 
     //calcular precio final incluyendo promos >15 --> 0.1 && categoria.equals("bazar) --> 0.1
     public double calcularPrecioFinal(){
+
+        //precio base
         double precioFinal= this.precioVenta;
+
+        //calculo del descuento por condición
+        double descuento= precioVenta*0.1;
+
         //promo categoría
         if(this.categoria.equals("bazar") ){
-            double precioDescuento= precioFinal- precioFinal*0.1;
+            double precioDescuento= precioFinal- descuento;
             if(precioDescuento < this.precioCosto){
                 IO.println("No se aplica descuento, no puede ser menor al precio de costo.");
             }else{
                 precioFinal= precioDescuento;
             }
         }
+
         //stock mínimo
         if(this.stock > this.STOCK_LIMITE_PROMOCION){
-            double precioDescuento= precioFinal*0.9;
-            if(precioDescuento < this.precioCosto){
+           // double precioDescuento= precioFinal*0.9;
+
+            if( (precioFinal - descuento) < this.precioCosto){
                 IO.println("No se aplica descuento, no puede ser menor al precio de costo.");
             }else{
-                precioFinal= precioDescuento;
+                precioFinal-= descuento;
             }
         }
         return precioFinal;
     }
 
 
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "CODIGO=" + CODIGO +
+                ", nombre='" + nombre + '\'' +
+                ", stock=" + stock +
+                ", precioCosto=" + precioCosto +
+                ", precioVenta=" + precioVenta +
+                '}';
+    }
 }
