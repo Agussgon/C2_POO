@@ -1,6 +1,6 @@
 public class Sube {
     //variables de clase
-    private static double limiteSaldoNegativo=-2000;
+    private static double limiteSaldoNegativo=2000;
 
     //variable de instancia --> objeto
     private final int NUMERO;
@@ -47,12 +47,15 @@ public class Sube {
 
     //cargar y pagar viajes
     public void cargarSaldo( double monto ){
+
+        //Y si el usuario se confunde? contemplarlo
         if(monto < 1 ) IO.println("Ingresa un monto válido");
         else
             this.saldo += monto;
     }
 
     public void pagarViaje( double viaje ){
+        //acá es más importante esta validación ver el calculo de saldo final
         if(viaje < 1 ) IO.println("Ingresa un monto válido");
         else{
             double saldoFinal= this.saldo - viaje;
