@@ -1,6 +1,7 @@
 public class Sube {
+
     //variables de clase
-    private static double limiteSaldoNegativo=2000;
+    private static double limiteSaldoNegativo=-2000;
 
     //variable de instancia --> objeto
     private final int NUMERO;
@@ -10,6 +11,10 @@ public class Sube {
     public Sube(int NUMERO, double saldo) {
         this.NUMERO = NUMERO;
         this.saldo = saldo;
+    }
+
+    public Sube(int NUMERO){
+        this.NUMERO=NUMERO;
     }
 
     public int getNUMERO(){
@@ -24,7 +29,7 @@ public class Sube {
     public static void setLimiteSaldoNegativo(double saldo){
         if(saldo > limiteSaldoNegativo){
             IO.println("No se puede disminuir el saldo negativo disponible.");
-        }else {limiteSaldoNegativo=saldo;}
+        }else {  limiteSaldoNegativo=saldo;}
     }
 
     // método de la instancia
@@ -59,6 +64,7 @@ public class Sube {
         if(viaje < 1 ) IO.println("Ingresa un monto válido");
         else{
             double saldoFinal= this.saldo - viaje;
+
             if( saldoFinal < limiteSaldoNegativo){
                 IO.println("Saldo insuficiente.");
             }else{
@@ -67,5 +73,21 @@ public class Sube {
 
         }
     }
+
+    //transferirle a otra sube
+
+    public void transferirSaldo(double monto, Sube subeR){
+        if(monto < 1) IO.println("Ingresa un monto válido.");
+        else if(monto > this.saldo) IO.println("No cuenta con suficiente saldo. Saldo actual disponible: "+this.saldo);
+        else{
+            this.saldo -= monto;
+            subeR.saldo += monto;
+
+            IO.println("La sube que transfiere quedó con el siguiente saldo $ "+ this.saldo+ "\n La sube que recibe con $ "+ subeR.saldo);
+
+        }
+
+    }
+
 
 }
