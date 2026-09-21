@@ -1,6 +1,6 @@
 public class Sube {
     //variables de clase
-    private static double limiteSaldoNegativo=2000;
+    private static double limiteSaldoNegativo=-2000;
 
     //variable de instancia --> objeto
     private final int NUMERO;
