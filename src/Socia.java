@@ -19,10 +19,17 @@ public class Socia {
         else limitePuntosTransferibles = nuevoValorLimite;
     }
 
+    //cnsultar el LPT
+    public int getLimitePuntosTransferibles(){
+        return limitePuntosTransferibles;
+    }
+
+
     //regalar
     public void regalarPuntos(int puntos, Socia otroSocio){
         if(puntos < 1) IO.println("Ingresa un valor positivo.");
-        else if(puntos > limitePuntosTransferibles) IO.println("No debe superar el límite establecido de transferencia. "
+        else if(puntos > limitePuntosTransferibles) IO.println("No debe superar el límite establecido " +
+                "de transferencia. "
         +limitePuntosTransferibles);
         else if( puntos > this.puntosDisponibles) IO.println("Supera los puntos disponibles.");
         else{
