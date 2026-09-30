@@ -25,4 +25,8 @@ public class Vehiculo {
                 ", motor=" + motor +
                 '}';
     }
+
+     String getPatente() {
+        return patente;
+    }
 }
