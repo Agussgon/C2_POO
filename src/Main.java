@@ -8,32 +8,28 @@ public class Main{
 
     static void main() {
 
-        //crear instancias de todas las clases
+        //creación de instancias
+        Sucursal sucursal1= new Sucursal(1,2345678, "Luis","tarde",123);
 
-        Profesional profesional1=new Profesional(123);
-        Paciente paciente1=new Paciente("Flor");
-        Tratamiento tratamiento1= new Tratamiento("cosmetología");
+        //libros son independientes el ciclo de vida
+        Libro libro1= new Libro(1,"POO 1","Fontela",40000.0,3);
+        Libro libro2= new Libro(2,"POO 2","Fontela",45000.0,5);
 
-        Turno turno1= new Turno(1, LocalDate.now(), paciente1,profesional1, tratamiento1);
+        //agregar y eliminar ejemplares
+        sucursal1.agregarLibro(libro1);
+        sucursal1.agregarLibro(libro2);
+        sucursal1.eliminarLibro(libro1);
 
-        Turno turno2= new Turno(2,LocalDate.of(2026,11,30),paciente1,profesional1, tratamiento1);
+        sucursal1.getEmpleado().consultarStockPorTitulo("POO 2",sucursal1.getLibros() );
 
-//
-        //visualizar info del turno 1
+        //métodos de los libros algunos
+        libro1.agregarStock(20);
+        IO.println(libro1.calcularPrecioFinal());
 
-        IO.println(turno1);
+        //método estático
+        Libro.setStock_promo(50);
+        IO.println(libro1.calcularPrecioFinal());
 
-        //Paciente maneja sus turnos
-
-        paciente1.agregarTurno(turno1);
-        paciente1.agregarTurno(turno2);
-        //  paciente1.eliminarTurno(turno2);
-        IO.println("consulta sus turnos "+ paciente1.getTurnos());
-
-        paciente1.eliminarTurno(turno1);
-        paciente1.modificarTurno(2,turno1);
-
-        IO.println("consulta sus turnos "+ paciente1.getTurnos());
 
 
 
